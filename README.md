@@ -1,39 +1,64 @@
-# Curso GRATUITO de Laravel 11.x
+# Product Search with Laravel Livewire
 
-- :movie_camera: [Acesse o Curso](https://academy.especializati.com.br/curso/laravel-11-completo-e-gratuito).
+Este repositório implementa um **mecanismo de busca de produtos com filtros combinados** utilizando **Laravel + Livewire**, executando em um **ambiente Docker**.
 
+A solução foi desenvolvida sobre um projeto base existente, porém **todo o escopo do desafio foi isolado**, garantindo fácil avaliação e execução sem conflitos.
 
-Links Úteis:
+---
 
-- :tada: [Saiba Mais](https://linktr.ee/especializati)
+## ✅ Funcionalidades
 
-## Passo a passo para rodar o projeto
-Clone o projeto
-```sh
-git clone https://github.com/especializati/curso-laravel-11 laravel-11
+- Busca de produtos por **nome**
+- Filtro por **uma ou múltiplas categorias**
+- Filtro por **uma ou múltiplas marcas**
+- Combinação de filtros utilizando lógica **AND**
+- Persistência dos filtros via **URL** (refresh mantém estado)
+- Botão para **limpar filtros**
+- **Testes automatizados** com Livewire
+
+---
+
+## 🛠️ Stack
+
+- PHP 8.3
+- Laravel
+- Livewire v3
+- MySQL 8
+- Redis
+- Docker / Docker Compose
+- Tailwind (via CDN, sem build frontend)
+
+---
+
+## 🚀 Passo a passo para rodar o projeto
+
+### 1️⃣ Clone o repositório
+
+```bash
+git clone https://github.com/natanbp7/teste_moot.git
+cd teste_moot
 ```
-```sh
-cd laravel-11/
-```
 
+---
 
-Crie o Arquivo .env
-```sh
+### 2️⃣ Crie o arquivo `.env`
+
+```bash
 cp .env.example .env
 ```
 
+Edite o `.env` com as seguintes configurações:
 
-Atualize essas variáveis de ambiente no arquivo .env
-```dosini
-APP_NAME="Especializa Ti"
-APP_URL=http://localhost:8989
+```dotenv
+APP_NAME="Gestor de Estoque - Busca Avançada"
+APP_URL=http://localhost:8000
 
 DB_CONNECTION=mysql
-DB_HOST=mysql
+DB_HOST=db
 DB_PORT=3306
-DB_DATABASE=nome_que_desejar_db
-DB_USERNAME=nome_usuario
-DB_PASSWORD=senha_aqui
+DB_DATABASE=laravel
+DB_USERNAME=username
+DB_PASSWORD=userpass
 
 CACHE_DRIVER=redis
 QUEUE_CONNECTION=redis
@@ -44,30 +69,96 @@ REDIS_PASSWORD=null
 REDIS_PORT=6379
 ```
 
+---
 
-Suba os containers do projeto
-```sh
-docker-compose up -d
+### 3️⃣ Suba os containers Docker
+
+```bash
+docker-compose up -d --build
 ```
 
+---
 
-Acesse o container
-```sh
+### 4️⃣ Acesse o container da aplicação
+
+```bash
 docker-compose exec app bash
 ```
 
+---
 
-Instale as dependências do projeto
-```sh
+### 5️⃣ Instale as dependências PHP
+
+```bash
 composer install
 ```
 
+---
 
-Gere a key do projeto Laravel
-```sh
+### 6️⃣ Gere a key do Laravel
+
+```bash
 php artisan key:generate
 ```
 
+---
 
-Acesse o projeto
-[http://localhost:8989](http://localhost:8989)
+### 7️⃣ Rode migrations e seeders
+
+```bash
+php artisan migrate --seed
+```
+
+---
+
+## 🔍 Acessando a funcionalidade do teste
+
+A implementação do desafio está disponível em:
+
+```
+http://localhost:8000/products
+```
+
+Esta rota é **isolada do projeto base** e contém toda a lógica solicitada no teste técnico.
+
+---
+
+## 🧪 Executando os testes
+
+O projeto base contém testes legados que não fazem parte do escopo do desafio.
+
+Para rodar **apenas os testes relacionados ao Product Search**, execute:
+
+```bash
+php artisan test --filter=ProductSearchTest
+```
+
+Resultado esperado:
+
+- Todos os testes do ProductSearch passam com sucesso
+
+---
+
+## 📁 Arquivos relevantes
+
+- `app/Livewire/ProductSearch.php`
+- `resources/views/livewire/product-search.blade.php`
+- `resources/views/products/index.blade.php`
+- `tests/Feature/Livewire/ProductSearchTest.php`
+- `database/migrations`
+- `database/seeders`
+
+---
+
+## 🧠 Observações finais
+
+- O uso de Tailwind via CDN evita dependências de Node/Vite, mantendo o setup simples
+- A solução prioriza **clareza, isolamento e testabilidade**, conforme solicitado
+
+---
+
+## ✅ Status
+
+✔ Funcionalidade completa  
+✔ Testes passando  
+✔ Pronto para avaliação
