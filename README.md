@@ -156,9 +156,3 @@ Resultado esperado:
 - A solução prioriza **clareza, isolamento e testabilidade**, conforme solicitado
 
 ---
-
-## ✅ Status
-
-✔ Funcionalidade completa  
-✔ Testes passando  
-✔ Pronto para avaliação
