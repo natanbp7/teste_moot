@@ -1,4 +1,4 @@
-# Product Search with Laravel Livewire
+# Busca de Produtos avançada com Laravel Livewire
 
 Este repositório implementa um **mecanismo de busca de produtos com filtros combinados** utilizando **Laravel + Livewire**, executando em um **ambiente Docker**.
 

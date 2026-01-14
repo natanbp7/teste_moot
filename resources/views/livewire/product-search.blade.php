@@ -1,7 +1,7 @@
 <div class="bg-white rounded-xl shadow p-6">
 
     <h1 class="text-2xl font-semibold mb-6">
-        Product Search
+        Busca de Produtos
     </h1>
 
     <!-- Search -->
