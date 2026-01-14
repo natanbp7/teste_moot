@@ -41,7 +41,7 @@ class ProductSearch extends Component
             ->get();
 
         return view('livewire.product-search', [
-            'products' => $products,          // 👈 ESSENCIAL
+            'products' => $products,
             'brandsList' => Brand::all(),
             'categoriesList' => Category::all(),
         ]);
